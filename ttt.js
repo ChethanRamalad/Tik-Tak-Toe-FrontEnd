@@ -4,21 +4,28 @@ let board = ['', '', '', '', '', '', '', '', ''];
 let gameActive = true;
 
 function handleClick(index) {
+    
     if (board[index] === '' && gameActive) {
+               
         board[index] = currentPlayer;
+
         renderBoard();
+        
         if (checkWinner()) {
-            document.getElementById('message').innerText = `Player ${currentPlayer} wins!`;
+            document.getElementById('message').innerText = `Player ${currentPlayer} wins!`;            
             gameActive = false;
-        } else if (board.every(cell => cell !== '')) {
+        } 
+        else if (board.every(cell => cell !== '')) {
             document.getElementById('message').innerText = 'It\'s a draw!';
             gameActive = false;
-        } else {
+        } 
+        else {
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
             document.getElementById('message').innerText = `Player ${currentPlayer}'s turn`;
         }
     }
 }
+
 
 function renderBoard() {
     for (let i = 0; i < 9; i++) {
@@ -50,3 +57,4 @@ function resetGame() {
     document.getElementById('message').innerText = `Player ${currentPlayer}'s turn`;
     renderBoard();
 }
+
